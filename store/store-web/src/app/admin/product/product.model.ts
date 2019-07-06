@@ -1,8 +1,5 @@
-// export class Product {
-//     constructor(public productName: string, public productCat: string) {}
-// }
-
 export class Product {
+    id: number;
     name: string;
     category: string;
 }

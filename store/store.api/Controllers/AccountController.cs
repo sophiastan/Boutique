@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Store.Data.Models;
 using Store.Data.Repositories;
 
-namespace store.api.Controllers
+namespace Store.API.Controllers
 {
     // REST API for managing user accounts
     [Route("api/[controller]")]
