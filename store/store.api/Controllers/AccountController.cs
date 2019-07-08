@@ -19,6 +19,14 @@ namespace Store.API.Controllers
             _repository = repository;
         }
 
+        // Gets user by username.
+        [HttpGet("{username}")]
+        public async Task<IActionResult> GetAsync(string username) {
+            var userFromDb = await _repository.GetUserAsync(username);
+            if (userFromDb != null) return Ok(userFromDb);
+            else return NotFound();
+        }
+
         // Signs up for a user account
         [HttpPost("signup")]
         public async Task<IActionResult> SignupAsync([FromBody] User user)
@@ -55,6 +63,14 @@ namespace Store.API.Controllers
                 Console.WriteLine($"Failed to sign out user: {user.UserName}");                
                 return NotFound();
             }
+        }
+
+        // Updates user info
+        [HttpPut("{username}")]
+        public async Task<IActionResult> UpdateAsync(string username, [FromBody] User user) {
+            var userFromDb = await  _repository.UpdateUserAsync(username, user);
+            if (userFromDb != null) return Ok(userFromDb);
+            else return NotFound();
         }
 
         // Removes a user account

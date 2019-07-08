@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Store.Data.Models;
 
 namespace Store.Data.Repositories
@@ -7,36 +8,64 @@ namespace Store.Data.Repositories
     // Repository for managing accounts in the database.
     public class AccountRepository : IAccountRepository
     {
-        static IDictionary<string, User> _users = new Dictionary<string, User>();
-        
-        // Adds a new user.
-        // Returns the user stored in the database.
-        async public Task<User> AddUserAsync(User user)
-        {
-            _users.Add(user.UserName, user);
+        DataContext _context;
 
-            return user;
+        public AccountRepository(DataContext context) {
+            _context = context;
         }
 
         // Gets a user by username.
         // Returns the user or null if not found.
         async public Task<User> GetUserAsync(string username)
         {
-            return _users.ContainsKey(username) ? _users[username] : null;
+            return await _context.Users.Include(u => u.Contact)
+                .FirstOrDefaultAsync(u => u.UserName == username);
+        }
+        
+        // Adds a new user.
+        // Returns the user stored in the database.
+        async public Task<User> AddUserAsync(User user)
+        {
+            await _context.Users.AddAsync(user);
+            await _context.SaveChangesAsync();
+
+            return await _context.Users.FirstOrDefaultAsync(u => user.Id == user.Id);
         }
 
+        // Updates a user.
+        // Returns the updated user.
+        async public Task<User> UpdateUserAsync(string username, User user) 
+        {
+            var userDb = await _context.Users.Include(u => u.Contact)
+                .SingleOrDefaultAsync(u => u.UserName == username);
+            if (userDb == null) return null;
+            UpdateUser(user, userDb);
+            await _context.SaveChangesAsync();
+            return userDb;
+        }
+ 
         // Deletes a user by username.
         // Returns the deleted user or null if not found.
         async public Task<User> DeleteUserAsync(string username)
         {
-            if (_users.ContainsKey(username)) {
-                var user = _users[username];
-                _users.Remove(username);
-                return user;
+            var userDb = await _context.Users.FirstOrDefaultAsync(u => u.UserName == username);
+            if (userDb != null) {
+                _context.Users.Remove(userDb);
+                await _context.SaveChangesAsync();
             }
-            else {
-                return null;
-            }
+            return userDb;
+        }
+
+        private void UpdateUser(User user, User userDb) {
+            userDb.Password = user.Password;
+            userDb.FirstName = user.FirstName;
+            userDb.LastName = user.LastName;
+            userDb.Contact.Address = user.Contact.Address;
+            userDb.Contact.City = user.Contact.City;
+            userDb.Contact.State = user.Contact.State;
+            userDb.Contact.Zip = user.Contact.Zip;
+            userDb.Contact.Email = user.Contact.Email;
+            userDb.Contact.Phone = user.Contact.Phone;
         }
     }
 }

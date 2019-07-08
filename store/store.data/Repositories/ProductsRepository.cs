@@ -3,58 +3,65 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Store.Data.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Store.Data.Repositories {
     public class ProductsRepository : IProductsRepository {
-        static int _id = 0;
-        static IDictionary<int, Product> _products = new Dictionary<int, Product>();
 
-       // Returns all products in the database.
+        DataContext _context;
+
+        public ProductsRepository(DataContext context) {
+            _context = context;
+        }
+ 
+        // Returns all products in the database.
         public async Task<IList<Product>> GetAllAsync() {
-            return _products.Values.ToList();
+            return await _context.Products.ToListAsync();
         }
 
         // Returns a product with product id.
         // Returns null if not found.
         public async Task<Product> GetAsync(int id) {
-            return _products.ContainsKey(id) ? _products[id] : null;
+            return await _context.Products.FirstOrDefaultAsync(p => p.Id == id);
         }
 
         // Returns a list of products for a category.
         public async Task<IList<Product>> GetProductsByCategoryAsync(string category) {
-            return _products.Values.Where(p => p.Category == category).ToList();
+            return await _context.Products.Where(p => p.Category == category).ToListAsync();
         }
 
         // Adds a new product.
         // Returns the product created in the database.
         public async Task<Product> AddAsync(Product product) {
-            product.Id = _id++;
-            _products.Add(product.Id, product);
+            await _context.Products.AddAsync(product);
+            await _context.SaveChangesAsync();
             return product;
         }
 
         // Updates a product.
         // Returns the updated product or null if the product doesn't exist.
         public async Task<Product> UpdateAsync(int id, Product product) {
-            if (_products.ContainsKey(id)) {
-                _products[id] = product;
-                return product;
-            } else {
-                return null;
-            }
+            var productDb = await _context.Products.SingleOrDefaultAsync(p => p.Id == id);
+            if (productDb == null) return null;
+            UpdateProduct(product, productDb);
+            await _context.SaveChangesAsync();
+            return productDb;
         }
 
         // Deletes a product.
         // Returns the deleted product or null if the product doesn't exist.
         public async Task<Product> DeleteAsync(int id) {
-            if (_products.ContainsKey(id)) {
-                var product = _products[id];
-                _products.Remove(id);
-                return product;
-            } else {
-                return null;
+            var productDb = await _context.Products.SingleOrDefaultAsync(p => p.Id == id);
+            if (productDb != null) {
+                _context.Products.Remove(productDb);
+                await _context.SaveChangesAsync();
             }
+            return productDb;
         }
 
+        private void UpdateProduct(Product product, Product productDb) {
+            productDb.Name = product.Name;
+            productDb.Category = product.Category;
+        }
     }
 }

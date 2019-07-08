@@ -16,7 +16,7 @@
         </div>
         <div class="form-group">
             <label for="inputEmail">Email Address</label> <br>
-            <input type="email" class="form-control" placeholder="Email Address" id="inputEmail" [(ngModel)]="user.email" required>
+            <input type="email" class="form-control" placeholder="Email Address" id="inputEmail" [(ngModel)]="user.contact.email" required>
         </div>
         <div class="form-group">
             <label for="inputUsername">Username</label> <br>
@@ -34,20 +34,20 @@
         </div>
         <div class="form-group">
             <label for="inputAddress">Address</label> <br>
-            <input type="text" class="form-control" placeholder="1234 Main St." id="inputAddress" [(ngModel)]="user.address" required>
+            <input type="text" class="form-control" placeholder="1234 Main St." id="inputAddress" [(ngModel)]="user.contact.address" required>
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="inputCity">City</label> <br>
-                <input type="text" class="form-control" placeholder="City" id="inputCity">
+                <input type="text" class="form-control" placeholder="City" id="inputCity" [(ngModel)]="user.contact.city" required>
             </div>
             <div class="form-group col-md-4">
                     <label for="inputState">State</label> <br>
-                    <input type="text" class="form-control" placeholder="State" id="inputState" [(ngModel)]="user.state" required>
+                    <input type="text" class="form-control" placeholder="State" id="inputState" [(ngModel)]="user.contact.state" required>
                 </div>
             <div class="form-group col-md-2">
                 <label for="inputZip">Zip Code</label> <br>
-                <input type="text" class="form-control" placeholder="Zip Code" id="inputZip" [(ngModel)]="user.zip" required>
+                <input type="text" class="form-control" placeholder="Zip Code" id="inputZip" [(ngModel)]="user.contact.zip" required>
             </div>
         </div>
         <div class="form-group">

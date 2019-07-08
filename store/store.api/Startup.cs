@@ -6,10 +6,12 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Store.Data;
 using Store.Data.Repositories;
 
 namespace store.api
@@ -28,13 +30,15 @@ namespace store.api
         {
             services.AddCors();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-
+            services.AddDbContext<DataContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddScoped<ISeedData, SeedData>();
             services.AddScoped<IAccountRepository, AccountRepository>();
             services.AddScoped<IProductsRepository, ProductsRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ISeedData seedData)
         {
             if (env.IsDevelopment())
             {
@@ -53,6 +57,9 @@ namespace store.api
 
             // app.UseHttpsRedirection();
             app.UseMvc();
+
+            // Intialize application
+            seedData.SeedDatabase();
         }
     }
 }
