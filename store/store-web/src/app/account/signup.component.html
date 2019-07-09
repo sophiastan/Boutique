@@ -7,47 +7,47 @@
         <div class="form-row">
             <div class="col">
                 <label for="inputFirstName">First Name</label> <br>
-                <input type="text" class="form-control" placeholder="First Name" [(ngModel)]="user.firstName" required>
+                <input type="text" class="form-control" name="firstName" placeholder="First Name" [(ngModel)]="user.firstName" required>
             </div>
             <div class="col">
                 <label for="inputLastName">Last Name</label> <br>
-                <input type="text" class="form-control" placeholder="Last Name" [(ngModel)]="user.lastName" required>
+                <input type="text" class="form-control" name="lastName" placeholder="Last Name" [(ngModel)]="user.lastName" required>
             </div>
         </div>
         <div class="form-group">
             <label for="inputEmail">Email Address</label> <br>
-            <input type="email" class="form-control" placeholder="Email Address" id="inputEmail" [(ngModel)]="user.email" required>
+            <input type="email" class="form-control" placeholder="Email Address" name="inputEmail" [(ngModel)]="user.email" required>
         </div>
         <div class="form-group">
             <label for="inputUsername">Username</label> <br>
-            <input type="text" class="form-control" placeholder="Username" id="inputUsername" [(ngModel)]="user.username" required>
+            <input type="text" class="form-control" placeholder="Username" name="inputUsername" [(ngModel)]="user.username" required>
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="inputPassword">Password</label> <br>
-                <input type="password" class="form-control" placeholder="Password" id="inputPassword" [(ngModel)]="user.password" required> <br>
+                <input type="password" class="form-control" placeholder="Password" name="inputPassword" [(ngModel)]="user.password" required> <br>
                 <small id="passHelpInLine" class="text-muted">Must be 8-20 characters long.</small>
             </div>
             <div class="form-group col-md-6">
-                <input type="password" class="form-control" placeholder="Confirm Password" id="confirmPassword" [(ngModel)]="user.password" required>
+                <input type="password" class="form-control" placeholder="Confirm Password" name="confirmPassword" [(ngModel)]="user.password" required>
             </div>
         </div>
         <div class="form-group">
             <label for="inputAddress">Address</label> <br>
-            <input type="text" class="form-control" placeholder="1234 Main St." id="inputAddress" [(ngModel)]="user.address" required>
+            <input type="text" class="form-control" placeholder="1234 Main St." name="inputAddress" [(ngModel)]="user.address" required>
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="inputCity">City</label> <br>
-                <input type="text" class="form-control" placeholder="City" id="inputCity">
+                <input type="text" class="form-control" placeholder="City" name="inputCity">
             </div>
             <div class="form-group col-md-4">
                     <label for="inputState">State</label> <br>
-                    <input type="text" class="form-control" placeholder="State" id="inputState" [(ngModel)]="user.state" required>
+                    <input type="text" class="form-control" placeholder="State" name="inputState" [(ngModel)]="user.state" required>
                 </div>
             <div class="form-group col-md-2">
                 <label for="inputZip">Zip Code</label> <br>
-                <input type="text" class="form-control" placeholder="Zip Code" id="inputZip" [(ngModel)]="user.zip" required>
+                <input type="text" class="form-control" placeholder="Zip Code" name="inputZip" [(ngModel)]="user.zip" required>
             </div>
         </div>
         <div class="form-group">

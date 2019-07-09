@@ -1,33 +1,4 @@
 <!-- <div class="container">
-        <section>
-                <h1>Add/Edit Product</h1>
-            </section>
-        <div class="row">
-                <div class="col-xs-12">
-                  <form>
-                    <div class="row">
-                      <div class="col-sm-5 form-group">
-                        <label for="name">Product Name</label>
-                        <input type="text" id="name" class="form-control">
-                      </div>
-                      <div class="col-sm-2 form-group">
-                        <label for="amount">Amount</label>
-                        <input type="number" id="amount" class="form-control">
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-xs-12">
-                        <button class="btn btn-success" type="submit">Add</button>
-                        <button class="btn btn-danger" type="button">Delete</button>
-                        <button class="btn btn-primary" type="button">Clear</button>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </div>
-</div> -->
-
-<div class="container">
   <h1>Product Editor</h1>
   <hr>
   <form>
@@ -39,10 +10,10 @@
     </div>
     <div class="form-row">
       <div class="col">
-        <button type="button" class="btn btn-success" (click)="add()">Add Product</button>
+        <button type="button" class="btn btn-success" (click)="add()">Add</button>
       </div>
       <div class="col">
-          <button type="button" class="btn btn-danger" (click)="delete()">Delete Product</button>
+          <button type="button" class="btn btn-danger" (click)="delete(products.name)">Delete</button>
       </div>
     </div>
 
@@ -54,4 +25,33 @@
       </li>
     </ul>
   </form>
-</div>
+</div> -->
+
+<div class="container">
+    <h1>Product Editor</h1>
+    <hr>
+    <form>
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Product Name" #nameInput id="productName" [(ngModel)]="product.name" [ngModelOptions]="{standalone: true}">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Which product category?" #catInput id="category" [(ngModel)]="product.category" [ngModelOptions]="{standalone: true}">
+      </div>
+      <div class="form-row">
+        <div class="col">
+          <button type="button" class="btn btn-success" (click)="add()">Add</button>
+        </div>
+        <div class="col">
+            <button type="button" class="btn btn-danger" (click)="delete(products.name)">Delete</button>
+        </div>
+      </div>
+  
+      <br>
+  
+      <ul class="list-group">
+        <li *ngFor="let product of products" class="list-group-item">
+          <span> {{ product.name }} </span>
+        </li>
+      </ul>
+    </form>
+  </div>
