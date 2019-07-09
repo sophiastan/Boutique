@@ -16,6 +16,11 @@ export class AccountService {
     constructor(private http: HttpClient) {
     }
 
+    // Gets all users.
+    getUsers(): Observable<User[]> {
+        return this.http.get<User[]>(this.baseUrl);
+    }
+
     // Gets a user by user name.
     // Returns the user info or NotFound if username is not found.
     getUser(username: string): Observable<User> {
@@ -40,13 +45,13 @@ export class AccountService {
 
     // Updates a user
     updateUser(user: User): Observable<User> {
-        const url = `${this.baseUrl}/${user.username}`;
+        const url = `${this.baseUrl}/${user.userName}`;
         return this.http.put<User>(url, user);
     }
 
     // Removes a user
     remove(user: User): Observable<User> {
-        const url = `${this.removeUrl}/${user.username}`;
+        const url = `${this.removeUrl}/${user.userName}`;
         return this.http.delete<User>(url);
     }
 }

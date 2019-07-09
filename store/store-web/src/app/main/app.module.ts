@@ -19,6 +19,9 @@ import { ListProductComponent } from '../admin/product/list-product.component';
 import { SignUpComponent } from '../account/signup.component';
 import { SignInComponent } from '../account/signin.component';
 
+import { TestAccountComponent } from '../test/test-account.component';
+import { TestProductComponent } from '../test/test-product.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +34,9 @@ import { SignInComponent } from '../account/signin.component';
     EditProductComponent,
     ListProductComponent,
     SignUpComponent,
-    SignInComponent
+    SignInComponent,
+    TestAccountComponent,
+    TestProductComponent
   ],
   imports: [
     BrowserModule,

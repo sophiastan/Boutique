@@ -5,5 +5,5 @@ export class Contact {
     state: string;
     zip: number;
     country: string;
-    phonne: string;
+    phone: string;
 }

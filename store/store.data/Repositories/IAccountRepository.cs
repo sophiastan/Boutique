@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Store.Data.Models;
 
@@ -6,6 +7,9 @@ namespace Store.Data.Repositories
     // User account repository
     public interface IAccountRepository
     {
+        // Gets all users.
+        Task<IList<User>> GetAllUsersAsync();
+
         // Gets a user by username.
         // Return the user if found or null if the username doesn't exist.
         Task<User> GetUserAsync(string username);

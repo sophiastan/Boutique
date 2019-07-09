@@ -19,6 +19,12 @@ namespace Store.API.Controllers
             _repository = repository;
         }
 
+        // Gets all users
+        [HttpGet()]
+        public async Task<IActionResult> GetAllAsync() {
+            return Ok(await _repository.GetAllUsersAsync());
+        }
+
         // Gets user by username.
         [HttpGet("{username}")]
         public async Task<IActionResult> GetAsync(string username) {

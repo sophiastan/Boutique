@@ -14,6 +14,11 @@ namespace Store.Data.Repositories
             _context = context;
         }
 
+        // Gets all users
+        async public Task<IList<User>> GetAllUsersAsync() {
+            return await _context.Users.ToListAsync();
+        }
+
         // Gets a user by username.
         // Returns the user or null if not found.
         async public Task<User> GetUserAsync(string username)
