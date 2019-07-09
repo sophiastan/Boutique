@@ -38,12 +38,12 @@ namespace Store.Data
         private void PopulateProducts() {
             if (!_context.Products.Any()) {
                 // Fruit category
-                AddProduct(CreateProduct(name: "Strawberry", category: "Fruit"));
-                AddProduct(CreateProduct("Banana", "Fruit"));
+                AddProduct(CreateProduct(name: "Strawberry", category: "Fruit", quantity: 5, price: 1.20));
+                AddProduct(CreateProduct("Banana", "Fruit", 2, 0.75));
 
                 // Sport category
-                AddProduct(CreateProduct("Baseball", "Sport")); 
-                AddProduct(CreateProduct("Volleyball", "Sport"));
+                AddProduct(CreateProduct("Baseball", "Sport", 12, 3.99)); 
+                AddProduct(CreateProduct("Volleyball", "Sport", 20, 5.99));
 
                 _context.SaveChanges();
             }
@@ -89,10 +89,12 @@ namespace Store.Data
         }
 
         // Creates product.
-        private Product CreateProduct(string name, string category) {
+        private Product CreateProduct(string name, string category, int quantity, double price) {
             return new Product() {
                 Name = name,
-                Category = category
+                Category = category,
+                Quantity = quantity,
+                Price = price
             };
         }
     }

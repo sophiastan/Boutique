@@ -13,7 +13,9 @@ export class EditProductComponent {
   add() {
     const prodName = this.nameInputRef.nativeElement.value;
     const prodCat = this.catInputRef.nativeElement.value;
-    const newProduct = new Product(prodName, prodCat);
+    const newProduct = new Product();
+    newProduct.name = prodName;
+    newProduct.category = prodCat;
     this.productAdded.emit(newProduct);
   }
 

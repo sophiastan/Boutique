@@ -1,8 +1,28 @@
 <section>
     <h1>List Product</h1>
+
+    <div class="container">
+      <table class="table table-sm table-striped">
+          <tr>
+              <th>ID</th>
+              <th>Product Name</th>
+              <th>Category</th>
+              <th>Quantity</th>
+              <th>Price</th>
+          </tr>
+          <tr *ngFor="let product of products">
+              <td>{{product.id}}</td>
+              <td>{{product.name}}</td>
+              <td>{{product.category}}</td>
+              <td>{{product.quantity}}</td>   
+              <td>{{product.price}}</td>         
+          </tr>
+      </table>
+   </div>
+  
 </section>
 
-<div class="row">
+<!-- <div class="row">
   <div class="col-xs-10">
     <app-edit-product
     (productAdded)="add($event)"></app-edit-product>
@@ -17,4 +37,4 @@
       </a>
     </ul>
   </div>
-</div>
+</div> -->
