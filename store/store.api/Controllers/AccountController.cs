@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Store.Data.Models;
 using Store.Data.Repositories;
 
-namespace store.api.Controllers
+namespace Store.API.Controllers
 {
     // REST API for managing user accounts
     [Route("api/[controller]")]
@@ -17,6 +17,14 @@ namespace store.api.Controllers
 
         public AccountController(IAccountRepository repository) {
             _repository = repository;
+        }
+
+        // Gets user by username.
+        [HttpGet("{username}")]
+        public async Task<IActionResult> GetAsync(string username) {
+            var userFromDb = await _repository.GetUserAsync(username);
+            if (userFromDb != null) return Ok(userFromDb);
+            else return NotFound();
         }
 
         // Signs up for a user account
@@ -55,6 +63,14 @@ namespace store.api.Controllers
                 Console.WriteLine($"Failed to sign out user: {user.UserName}");                
                 return NotFound();
             }
+        }
+
+        // Updates user info
+        [HttpPut("{username}")]
+        public async Task<IActionResult> UpdateAsync(string username, [FromBody] User user) {
+            var userFromDb = await  _repository.UpdateUserAsync(username, user);
+            if (userFromDb != null) return Ok(userFromDb);
+            else return NotFound();
         }
 
         // Removes a user account

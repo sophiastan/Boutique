@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { NavigationComponent } from './navigation.component';
 import { HomeComponent } from './home.component';
 import { AccountService } from '../services/account.service';
+import { ProductsService } from '../services/products.service';
 
 import { CategoryListComponent } from '../store/category-list/category-list.component';
 import { StoreComponent } from '../store/store.component';
@@ -39,7 +40,8 @@ import { SignInComponent } from '../account/signin.component';
     HttpClientModule
   ],
   providers: [
-    AccountService
+    AccountService,
+    ProductsService
   ],
   bootstrap: [AppComponent]
 })

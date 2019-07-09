@@ -12,7 +12,7 @@ namespace Store.Data.Models
 
         public string LastName { get; set; }
 
-        public Contact Contact { get; private set; }
+        public Contact Contact { get; set; }
 
         public User() {
             Contact = new Contact();

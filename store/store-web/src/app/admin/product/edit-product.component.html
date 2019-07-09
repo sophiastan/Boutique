@@ -32,10 +32,10 @@
     <hr>
     <form>
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="Product Name" #nameInput id="productName" [(ngModel)]="product.name" [ngModelOptions]="{standalone: true}">
+        <input type="text" class="form-control" placeholder="Product Name" name="productName" #nameInput [(ngModel)]="product.name">
       </div>
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="Which product category?" #catInput id="category" [(ngModel)]="product.category" [ngModelOptions]="{standalone: true}">
+        <input type="text" class="form-control" placeholder="Which product category?" name="category" #catInput [(ngModel)]="product.category">
       </div>
       <div class="form-row">
         <div class="col">
