@@ -5,4 +5,13 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './navigation.component.html'
 })
 export class NavigationComponent {
+  isExpanded = false;
+
+  collapse() {
+    this.isExpanded = false;
+  }
+
+  toggle() {
+    this.isExpanded = !this.isExpanded;
+  }
 }
