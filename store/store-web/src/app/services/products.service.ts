@@ -40,10 +40,10 @@ export class ProductsService {
 
     // Updates a product.
     // Returns the updated product or NotFound if the product is not found.
-    // updateProduct(product: Product): Observable<Product> {
-    //     const url = `${this.productsUrl}/${product.id}`;
-    //     return this.http.put<Product>(url, product);
-    // }
+    updateProduct(product: Product): Observable<Product> {
+        const url = `${this.productsUrl}/${product.id}`;
+        return this.http.put<Product>(url, product);
+    }
 
     // Deletes a product.
     // Returns the deleted product or NotFound if the product is not found.

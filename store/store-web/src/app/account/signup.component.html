@@ -19,16 +19,21 @@
             <input type="email" class="form-control" placeholder="Email Address" name="inputEmail" [(ngModel)]="user.email" required>
         </div>
         <div class="form-group">
+            <label for="inputPhone">Phone Number</label> <br>
+            <input type="tel" class="form-control" placeholder="Phone Number" name="inputPhone" [(ngModel)]="user.phone" required>
+        </div>
+        <div class="form-group">
             <label for="inputUsername">Username</label> <br>
-            <input type="text" class="form-control" placeholder="Username" name="inputUsername" [(ngModel)]="user.username" required>
+            <input type="text" class="form-control" placeholder="Username" name="inputUsername" [(ngModel)]="user.userName" required>
         </div>
         <div class="form-row">
-            <div class="form-group col-md-6">
+            <div class="col">
                 <label for="inputPassword">Password</label> <br>
                 <input type="password" class="form-control" placeholder="Password" name="inputPassword" [(ngModel)]="user.password" required> <br>
                 <small id="passHelpInLine" class="text-muted">Must be 8-20 characters long.</small>
             </div>
-            <div class="form-group col-md-6">
+            <div class="col">
+                <label for="inputConfirmPassword">Confirm Password</label> <br>
                 <input type="password" class="form-control" placeholder="Confirm Password" name="confirmPassword" [(ngModel)]="user.password" required>
             </div>
         </div>
@@ -47,7 +52,7 @@
                 </div>
             <div class="form-group col-md-2">
                 <label for="inputZip">Zip Code</label> <br>
-                <input type="text" class="form-control" placeholder="Zip Code" name="inputZip" [(ngModel)]="user.zip" required>
+                <input type="number" class="form-control" placeholder="Zip Code" name="inputZip" [(ngModel)]="user.zip" required>
             </div>
         </div>
         <div class="form-group">
@@ -60,6 +65,6 @@
     </form>
     <hr> 
     <div class="container signin">
-            <p>Already have an account? <a href="#" [routerLink]="['signin']"><b>Sign in</b></a>.</p>
+            <p>Already have an account? <a href="#" [routerLink]="['/signin']"><b>Sign in</b></a>.</p>
     </div>
 </div>

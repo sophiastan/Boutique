@@ -9,32 +9,20 @@
               <th>Category</th>
               <th>Quantity</th>
               <th>Price</th>
+              <th></th>
           </tr>
           <tr *ngFor="let product of products">
               <td>{{product.id}}</td>
               <td>{{product.name}}</td>
               <td>{{product.category}}</td>
               <td>{{product.quantity}}</td>   
-              <td>{{product.price}}</td>         
+              <td>{{product.price}}</td>
+              <td>
+                <a [routerLink]="['/products', product.id]">
+                  View Detail
+                </a>
+              </td>         
           </tr>
       </table>
    </div>
-  
 </section>
-
-<!-- <div class="row">
-  <div class="col-xs-10">
-    <app-edit-product
-    (productAdded)="add($event)"></app-edit-product>
-    <hr>
-    <ul class="list-group">
-      <a 
-        class="list-group-item" 
-        style="cursor: pointer"
-        *ngFor="let product of products"
-      >
-        {{ product.name }} ({{ product.amount }})
-      </a>
-    </ul>
-  </div>
-</div> -->

@@ -6,7 +6,7 @@
 }
 
 /* Full-width input fields */
-input[type=text], input[type=password], input[type=email]{
+input:not([type=checkbox]){
   width: 80%;
   padding: 15px;
   margin: 5px 0 22px 0;
@@ -15,11 +15,10 @@ input[type=text], input[type=password], input[type=email]{
   background: #f1f1f1;
 }
 
-input[type=text]:focus, input[type=password]:focus input[type=email]:focus{
+input:focus:not([type=checkbox]){
   background-color: #ddd;
   outline: none;
 }
-
 /* Overwrite default styles of hr */
 hr {
   border: 1px solid #f1f1f1;

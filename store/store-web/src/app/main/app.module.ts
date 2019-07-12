@@ -18,6 +18,7 @@ import { EditProductComponent } from '../admin/product/edit-product.component';
 import { ListProductComponent } from '../admin/product/list-product.component';
 import { SignUpComponent } from '../account/signup.component';
 import { SignInComponent } from '../account/signin.component';
+import { ListUserComponent } from '../account/list-user.component'
 
 import { TestAccountComponent } from '../test/test-account.component';
 import { TestProductComponent } from '../test/test-product.component';
@@ -35,6 +36,7 @@ import { TestProductComponent } from '../test/test-product.component';
     ListProductComponent,
     SignUpComponent,
     SignInComponent,
+    ListUserComponent,
     TestAccountComponent,
     TestProductComponent
   ],
