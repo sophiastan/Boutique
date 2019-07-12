@@ -37,9 +37,14 @@ namespace Store.API.Controllers
         }
 
         // Get a list of products by category.
-        [HttpGet("category/{category}")]
+        [HttpGet("categories/{category}")]
         public async Task<IActionResult> GetProductsByCategory(string category) {
             return Ok(await _repository.GetProductsByCategoryAsync(category));
+        }
+
+        [HttpGet("categories")]
+        public async Task<IActionResult> GetCategories() {
+            return Ok(await _repository.GetCategories());
         }
 
         // Adds a new product.

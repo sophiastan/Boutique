@@ -9,7 +9,7 @@ import { Product } from '../admin/product/product.model';
 export class ProductsService {
     baseUrl = 'http://localhost:5000';
     productsUrl = this.baseUrl + '/api/products';
-    productsByCategoryUrl = this.baseUrl + '/api/products/category';
+    categoriesUrl = this.baseUrl + '/api/products/categories';
 
     constructor(private http: HttpClient) {
     }
@@ -21,8 +21,12 @@ export class ProductsService {
 
     // Gets products for a category.
     getProductsByCategory(category: string): Observable<Product[]> {
-        const url = `${this.productsByCategoryUrl}/${category}`;
+        const url = `${this.categoriesUrl}/${category}`;
         return this.http.get<Product[]>(url);
+    }
+
+    getCategories(): Observable<string[]> {
+        return this.http.get<string[]>(this.categoriesUrl);
     }
 
     // Gets a product.

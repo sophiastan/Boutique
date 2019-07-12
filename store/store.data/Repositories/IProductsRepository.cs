@@ -16,6 +16,9 @@ namespace Store.Data.Repositories {
         // Returns a list of products for a category.
         Task<IList<Product>> GetProductsByCategoryAsync(string category);
 
+        // Returns a list of categories.
+        Task<IList<string>> GetCategories();
+
         // Adds a new product.
         // Returns the product created in the database.
         Task<Product> AddAsync(Product product);
