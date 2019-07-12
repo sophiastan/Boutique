@@ -9,47 +9,38 @@ import { Router, ActivatedRoute } from '@angular/router';
   templateUrl: './edit-product.component.html',
   styleUrls: ['./edit-product.component.css']
 })
-export class EditProductComponent {
+export class EditProductComponent implements OnInit {
   product: Product;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private productService: ProductsService) 
+    private productsService: ProductsService) 
   {
     this.product = new Product();
-    this.route.params.subscribe(p => this.product.id = +p['id']);
+    this.route.params.subscribe(p => {
+      const id = +p.id;
+      if (id) {
+        this.product.id = id;
+      }
+    });
   }
 
   ngOnInit(): void {
-    const requests: Observable<any>[] = [
-      
-    ];
-
-    // If product ID is specified, it's for editing; otherwise for new vehicle
     if (this.product.id) {
-      requests.push(this.productService.getProdcut(this.product.id));
+      this.productsService.getProduct(this.product.id).subscribe(prod => this.product = prod);
     }
-    forkJoin(requests).subscribe(data => {
-      if (this.product.id) {
-        
-      }
-    }, err => {
-        if (err.status === 404) {
-          this.router.navigate(['']);
-        }
-    });
   }
 
   submit() {
     let result: Observable<Product>;
     if (this.product.id) {
       // Update
-      result = this.productService.updateProduct(this.product);
+      result = this.productsService.updateProduct(this.product);
     }
     else {
       // Add
-      result = this.productService.addProduct(this.product);
+      result = this.productsService.addProduct(this.product);
     }
     result.subscribe((product: Product) => {
       this.router.navigate(['products']);
@@ -58,19 +49,10 @@ export class EditProductComponent {
 
   delete() {
     if (confirm('Delete this product?')) {
-      this.productService.deleteProduct(this.product.id)
+      this.productsService.deleteProduct(this.product.id)
         .subscribe(r => {
           this.router.navigate(['products']);
         });
     }
-  }
-
-  private populateProduct(product: Product) {
-    this.product.id = product.id;
-    this.product.name = product.name;
-    this.product.category = product.category;
-    this.product.quantity = product.quantity;
-    this.product.price = product.price; 
-    // forEach?
   }
 }

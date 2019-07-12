@@ -27,7 +27,7 @@ export class ProductsService {
 
     // Gets a product.
     // Returns the product or NotFound if the product is not found.
-    getProdcut(id: number): Observable<Product> {
+    getProduct(id: number): Observable<Product> {
         const url = `${this.productsUrl}/${id}`;
         return this.http.get<Product>(url);
     }
