@@ -30,6 +30,11 @@ namespace Store.Data.Repositories {
             return await _context.Products.Where(p => p.Category == category).ToListAsync();
         }
 
+        // Returns a list of categories
+        public async Task<IList<string>> GetCategories() {
+            return await _context.Products.Select(p => p.Category).Distinct().ToListAsync();
+        }
+
         // Adds a new product.
         // Returns the product created in the database.
         public async Task<Product> AddAsync(Product product) {
