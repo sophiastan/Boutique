@@ -16,7 +16,7 @@ namespace Store.Data.Repositories
 
         // Gets all users
         async public Task<IList<User>> GetAllUsersAsync() {
-            return await _context.Users.ToListAsync();
+            return await _context.Users.Include(u => u.Contact).ToListAsync();
         }
 
         // Gets a user by username.
