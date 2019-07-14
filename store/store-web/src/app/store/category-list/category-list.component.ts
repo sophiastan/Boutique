@@ -11,22 +11,26 @@ export class CategoryListComponent implements OnInit {
   product: Product;
   products = [];
 
+  // cat = this.product.category;
+  // categories = [];
+
   public selectedCategory = null;
   public productsPerPage = 4;
   public selectedPage = 1;
 
   constructor(private productsService: ProductsService) {
-    this.product = new Product; 
+    this.product = new Product;
    }
 
   ngOnInit(): void {
     this.productsService.getAllProducts().subscribe((products: Product[]) => this.products = products);
+    // this.productsService.getCategories().subscribe((categories) => this.selectedCategory = this.selectedCategory);
   }
 
   changeCategory(newCategory?: string) {
     this.selectedCategory = newCategory;
   }
 
-  
+
 
 }

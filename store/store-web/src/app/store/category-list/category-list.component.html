@@ -1,10 +1,3 @@
-<!-- <div class="sidenav">
-    <a routerLink="produce">Produce</a>
-    <a routerLink="meat">Meat</a>
-    <a routerLink="bakery">Bakery</a>
-    <a routerLink="dairy">Dairy</a>
-</div> -->
-
 <div class="container-fluid">
     <div class="row">
         <div class="col bg-dark text-white">
@@ -13,7 +6,7 @@
     </div>
     <div class="row">
         <div class="col-3 p-2">
-            <button class="btn btn-block btn-outline-primary" (click)="changeCategory()">Home</button>
+            <!-- <button class="btn btn-block btn-outline-primary" (click)="changeCategory()">Home</button> -->
             <button 
                 *ngFor="let cat of categories"
                 class="btn btn-outline-primary btn-block"
@@ -30,7 +23,7 @@
                     </span>
                 </h4>
                 <div class="card-text bg-white p-1">
-                    {{product.quantity}}
+                    Quantity: {{product.quantity}}
                 </div>
             </div>
         </div>
