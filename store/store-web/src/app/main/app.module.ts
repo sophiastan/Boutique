@@ -10,7 +10,6 @@ import { HomeComponent } from './home.component';
 import { AccountService } from '../services/account.service';
 import { ProductsService } from '../services/products.service';
 
-import { CategoryListComponent } from '../store/category-list/category-list.component';
 import { StoreComponent } from '../store/store.component';
 import { ProductListComponent } from '../store/product-list/product-list.component';
 import { ProductItemComponent } from '../store/product-list/product-item.component';
@@ -28,7 +27,6 @@ import { TestProductComponent } from '../test/test-product.component';
     AppComponent,
     NavigationComponent,
     HomeComponent,
-    CategoryListComponent,
     StoreComponent,
     ProductListComponent,
     ProductItemComponent,

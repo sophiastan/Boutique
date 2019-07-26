@@ -1,38 +1,6 @@
-<!-- <div class="row">
-    <div class="row">
-        <div class="col-xs-12">
-            <a
-                href="#" 
-                class="list-group-item clearfix" 
-                *ngFor="let product of products">
-                <div class="pull-left">
-                    <h4 class="list-group-item-heading">{{ product.name }}</h4>
-                    <p class="list-group-item-text">{{ product.description }}</p>
-                </div>
-                <span class="pull-right">
-                    <img
-                        [src]="product.imagePath" 
-                        alt="{{ product.name }}" 
-                        class="img-responsive" 
-                        style="max-height: 50px;">
-                </span>
-            </a>
-            <app-product-item></app-product-item>            
-        </div>
-    </div>
-</div>
- -->
 <div>
-    <h1>Product List</h1>
-    <div *ngFor="let product of products" class="card m-1 p-1 bg-light">
-        <h4>
-            {{product.name}}
-            <span class="badge badge-pill badge-primary float-right">
-                {{ product.price | currency:"USD":"symbol":"2.2-2"}}
-            </span>
-        </h4>
-        <div class="card-text bg-white p-1">
-            Quantity: {{product.quantity}}
-        </div>
+    <h2 class="text-center">{{ category || 'All'}}</h2>
+    <div *ngFor="let prod of products" class="card m-1 p-1 bg-light">
+        <app-product-item [product]='prod'></app-product-item>
     </div>
 </div>

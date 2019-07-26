@@ -1,3 +1,9 @@
-<p>
-  product-item works!
-</p>
+<h4>
+  {{product.name}}
+  <span class="badge badge-pill badge-primary float-right">
+      {{ product.price | currency:"USD":"symbol":"2.2-2"}}
+  </span>
+</h4>
+<div class="card-text bg-white p-1">
+  Quantity: {{product.quantity}}
+</div>

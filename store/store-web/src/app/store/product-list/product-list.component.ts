@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges, OnChanges } from '@angular/core';
 import { ProductsService } from 'src/app/services/products.service';
 import { Product } from 'src/app/admin/product/product.model';
 
@@ -7,13 +7,32 @@ import { Product } from 'src/app/admin/product/product.model';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent implements OnInit {
+export class ProductListComponent implements OnInit, OnChanges {
   products: Product[];
+  @Input() category: string; 
 
   constructor(private productsService: ProductsService) {
   }
 
   ngOnInit() {
-    this.productsService.getProductsByCategory('Sport').subscribe((products: Product[]) => this.products = products);
+    this.getProducts(this.category);
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    const categoryChange = changes.category;
+    if (categoryChange) {
+      this.getProducts(this.category);
+    }
+  }
+
+  getProducts(category: string) {
+    if (category) {
+      this.productsService.getProductsByCategory(this.category)
+        .subscribe((products: Product[]) => this.products = products);
+    }
+    else {
+      this.productsService.getAllProducts()
+        .subscribe((products: Product[]) => this.products = products);
+    }
   }
 }

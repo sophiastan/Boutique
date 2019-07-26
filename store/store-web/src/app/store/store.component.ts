@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ProductListComponent } from '../store/product-list/product-list.component'
+import { ProductsService } from '../services/products.service';
 
 @Component({
   selector: 'app-store',
@@ -6,10 +8,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./store.component.css']
 })
 export class StoreComponent implements OnInit {
+  @Input() selectedCategory: string;
+  categories: string[];
 
-  constructor() { }
+  constructor(private productsService: ProductsService) {
+  }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.productsService.getCategories().subscribe((categories: string[]) => {
+      this.categories = [];
+      this.categories.push('');
+      this.categories = this.categories.concat(categories);
+    });
+  }
+
+
+  updateCategory(cat: string) {
+    this.selectedCategory = cat;
   }
 
 }
