@@ -1,20 +1,21 @@
 import { Component, OnInit, Input} from '@angular/core';
-import { User } from '../account/user';
 import { AccountService } from '../services/account.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit{
-  user: User; 
-  @Input() selectdUserName: string;
+  userName: string;
 
-  constructor(private accountService: AccountService) {
+  constructor(
+    private route: ActivatedRoute,
+    private accountService: AccountService) {
   }
 
   ngOnInit(): void {
-    
+    // this.userName = this.route.snapshot.queryParams.userName;
   }
 
 }

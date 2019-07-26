@@ -18,12 +18,6 @@ export class SignInComponent implements OnInit{
         private router: Router,
         private accountService: AccountService) {
         this.user = new User();
-        // this.route.params.subscribe(p => {
-        // const id = +p.id;
-        // if (id) {
-        //     this.user.id = id;
-        // }
-        // });
     }
 
     ngOnInit() {
@@ -34,11 +28,15 @@ export class SignInComponent implements OnInit{
         const result = this.accountService.signin(this.user);
         result.subscribe(
             (user: User) => {
-            console.log('Signin is successfull');
-            this.displayUsername = user.userName;
-            console.log(this.displayUsername);
-            this.router.navigate(['']);
-        },
+                console.log('Signin is successfull');
+                this.displayUsername = user.userName;
+                console.log(this.displayUsername);
+                this.router.navigate(['',
+                // {
+                //     userName: user.userName
+                // }
+            ]);
+            },
             error => {
                 alert('Username or Password does not exist.');
             }

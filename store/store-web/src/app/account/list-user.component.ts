@@ -9,23 +9,23 @@ import { Router } from '@angular/router';
 })
 
 export class ListUserComponent implements OnInit {
-    user: User;
     users = [];
-  
+
     constructor(
         private accountService: AccountService,
         private router: Router) {
     }
-  
+
     ngOnInit(): void {
         this.accountService.getUsers().subscribe((users: User[]) => this.users = users);
     }
 
-    delete() {
-        if (confirm('Delete this user?')) {
-          this.accountService.remove(this.user)
+    delete(user: User) {
+        const message = 'Delete user ' + user.userName + '?';
+        if (confirm(message)) {
+          this.accountService.remove(user)
             .subscribe(r => {
-              this.router.navigate(['users']);
+              this.router.navigate(['']);
             });
         }
       }
