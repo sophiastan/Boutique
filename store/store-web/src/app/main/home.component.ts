@@ -7,7 +7,6 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit{
-  userName: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -15,7 +14,15 @@ export class HomeComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    // this.userName = this.route.snapshot.queryParams.userName;
+    
+  }
+
+  getName() {
+    const user = this.accountService.getSignedInUser();
+    if (user) {
+      return user.firstName + ' ' + user.lastName;
+    }
+    else return '';
   }
 
 }

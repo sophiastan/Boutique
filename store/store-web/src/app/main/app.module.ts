@@ -9,6 +9,7 @@ import { NavigationComponent } from './navigation.component';
 import { HomeComponent } from './home.component';
 import { AccountService } from '../services/account.service';
 import { ProductsService } from '../services/products.service';
+import { ShoppingCartService } from '../services/shopping-cart.service';
 
 import { StoreComponent } from '../store/store.component';
 import { ProductListComponent } from '../store/product-list/product-list.component';
@@ -17,7 +18,8 @@ import { EditProductComponent } from '../admin/product/edit-product.component';
 import { ListProductComponent } from '../admin/product/list-product.component';
 import { SignUpComponent } from '../account/signup.component';
 import { SignInComponent } from '../account/signin.component';
-import { ListUserComponent } from '../account/list-user.component'
+import { ListUserComponent } from '../account/list-user.component';
+import { ShoppingCartComponent } from '../shopping-cart/shopping-cart.component';
 
 import { TestAccountComponent } from '../test/test-account.component';
 import { TestProductComponent } from '../test/test-product.component';
@@ -35,6 +37,7 @@ import { TestProductComponent } from '../test/test-product.component';
     SignUpComponent,
     SignInComponent,
     ListUserComponent,
+    ShoppingCartComponent,
     TestAccountComponent,
     TestProductComponent
   ],
@@ -46,7 +49,8 @@ import { TestProductComponent } from '../test/test-product.component';
   ],
   providers: [
     AccountService,
-    ProductsService
+    ProductsService,
+    ShoppingCartService
   ],
   bootstrap: [AppComponent]
 })

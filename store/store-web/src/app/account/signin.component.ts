@@ -11,7 +11,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 export class SignInComponent implements OnInit{
     user: User;
-    @Input() displayUsername: string;
 
     constructor(
         private route: ActivatedRoute,
@@ -21,21 +20,16 @@ export class SignInComponent implements OnInit{
     }
 
     ngOnInit() {
-        // this.getUser(this.userName);
+        
     }
 
     submit() {
         const result = this.accountService.signin(this.user);
         result.subscribe(
             (user: User) => {
+                this.accountService.saveSignedInUser(user);
                 console.log('Signin is successfull');
-                this.displayUsername = user.userName;
-                console.log(this.displayUsername);
-                this.router.navigate(['',
-                // {
-                //     userName: user.userName
-                // }
-            ]);
+                this.router.navigate(['']);
             },
             error => {
                 alert('Username or Password does not exist.');

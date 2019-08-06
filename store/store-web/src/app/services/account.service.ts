@@ -13,6 +13,9 @@ export class AccountService {
     signoutUrl = this.baseUrl + '/signout';
     removeUrl = this.baseUrl + '/remove';
 
+    signedInUser: User; 
+    loggedIn: boolean = false;
+
     constructor(private http: HttpClient) {
     }
 
@@ -38,6 +41,11 @@ export class AccountService {
         return this.http.post<User>(this.signinUrl, user);
     }
 
+    // Saves user in this function
+    saveSignedInUser(user: User) {
+        this.signedInUser = user;
+    }
+
     // Signs out a user
     signout(user: User): Observable<User> {
         return this.http.post<User>(this.signoutUrl, user);
@@ -53,5 +61,13 @@ export class AccountService {
     remove(user: User): Observable<User> {
         const url = `${this.removeUrl}/${user.userName}`;
         return this.http.delete<User>(url);
+    }
+
+    getSignedInUser() {
+        return this.signedInUser; 
+    }
+
+    getIsLoggedIn() {
+        return this.loggedIn;
     }
 }
