@@ -14,11 +14,11 @@ export class NavigationComponent {
   public constructor(private accountService: AccountService) {
   }
 
-  getSignedInUser() {
-    const user = this.accountService.getSignedInUser();
-    console.log('From getSignedInuser(). User = ' + user.userName);
-    return user;
-  }
+  // getSignedInUser() {
+  //   const user = this.accountService.getSignedInUser();
+  //   console.log('From getSignedInuser(). User = ' + user.userName);
+  //   return user;
+  // }
 
   collapse() {
     this.isExpanded = false;

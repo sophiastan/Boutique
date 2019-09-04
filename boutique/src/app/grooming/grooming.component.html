@@ -1,0 +1,43 @@
+<div class="container">
+    <form (submit)="submit()">
+        <h1>Grooming Salon</h1>
+        <h4>Book an appointment</h4>
+        <hr>
+
+        <div class="form-group">
+            <label for="inputName">Pet Name</label><br>
+            <input type="text" class="form-control" name="petName" placeHolder="Pet Name" required>
+        </div>
+        <div class="form-group">
+            <label for="type">Type</label><br>
+                <input type="radio" name="type" value="dog"> Dog <br>
+                <input type="radio" name="type" value="cat"> Cat <br>
+        </div>
+        <div class="form-group">
+            <label for="birthday">Pet Birthday</label><br>
+            <input type="date" name="bday" required>
+        </div>
+        <div class="form-group">
+            <label for="gender">Gender</label><br>
+            <select name="gender">
+                <option value="male-neutered">Male-neutered</option>
+                <option value="male-not neutered">Male-not neutered</option>
+                <option value="female-spayed">Female-spayed</option>
+                <option value="female-not spayed">Female-not spayed</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="breed">Breed</label><br>
+            <input type="text" name="breed" placeholder="Golden Retriever" required>
+        </div>
+        <div class="form-group">
+            <label for="weight">Weight</label><br>
+            <input type="number" name="weight" required>
+        </div>
+        <div class="form-group">
+            <label for="color">Color (optional)</label><br>
+            <input type="text" name="color" placeholder="Gold">
+        </div>
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+</div>

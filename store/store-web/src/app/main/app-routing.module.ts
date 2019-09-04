@@ -10,13 +10,20 @@ import { ListUserComponent } from '../account/list-user.component';
 
 import { TestProductComponent } from '../test/test-product.component';
 import { TestAccountComponent } from '../test/test-account.component';
+import { ShoppingCartComponent } from '../shopping-cart/shopping-cart.model';
+import { CartDetailComponent } from '../shopping-cart/cartDetail.component';
+import { CartCheckoutComponent } from '../shopping-cart/cartCheckout.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent },
+
   { path: 'store', component: StoreComponent},
   { path: 'products/new', component: EditProductComponent},
   { path: 'products/:id', component: EditProductComponent},
   { path: 'products', component: ListProductComponent},
+  { path: 'cart', component: CartDetailComponent},
+  { path: 'checkout', component: CartCheckoutComponent},
+
   { path: 'signup', component: SignUpComponent},
   { path: 'signin', component: SignInComponent},
   { path: 'users', component: ListUserComponent},

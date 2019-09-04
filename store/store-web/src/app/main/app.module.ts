@@ -9,7 +9,7 @@ import { NavigationComponent } from './navigation.component';
 import { HomeComponent } from './home.component';
 import { AccountService } from '../services/account.service';
 import { ProductsService } from '../services/products.service';
-import { ShoppingCartService } from '../services/shopping-cart.service';
+import { ShoppingCartComponent } from '../shopping-cart/shopping-cart.model';
 
 import { StoreComponent } from '../store/store.component';
 import { ProductListComponent } from '../store/product-list/product-list.component';
@@ -19,7 +19,10 @@ import { ListProductComponent } from '../admin/product/list-product.component';
 import { SignUpComponent } from '../account/signup.component';
 import { SignInComponent } from '../account/signin.component';
 import { ListUserComponent } from '../account/list-user.component';
-import { ShoppingCartComponent } from '../shopping-cart/shopping-cart.component';
+import { CartSummaryComponent } from '../shopping-cart/cartSummary.component';
+import { CartDetailComponent } from '../shopping-cart/cartDetail.component';
+import { CartCheckoutComponent } from '../shopping-cart/cartCheckout.component';
+
 
 import { TestAccountComponent } from '../test/test-account.component';
 import { TestProductComponent } from '../test/test-product.component';
@@ -34,10 +37,12 @@ import { TestProductComponent } from '../test/test-product.component';
     ProductItemComponent,
     EditProductComponent,
     ListProductComponent,
+    CartSummaryComponent,
+    CartDetailComponent,
+    CartCheckoutComponent,
     SignUpComponent,
     SignInComponent,
     ListUserComponent,
-    ShoppingCartComponent,
     TestAccountComponent,
     TestProductComponent
   ],
@@ -50,7 +55,7 @@ import { TestProductComponent } from '../test/test-product.component';
   providers: [
     AccountService,
     ProductsService,
-    ShoppingCartService
+    ShoppingCartComponent
   ],
   bootstrap: [AppComponent]
 })
