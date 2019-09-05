@@ -7,48 +7,48 @@
         <h3>Pet Details</h3>
         <div class="form-group">
             <label for="inputName">Pet Name</label><br>
-            <input type="text" class="form-control" name="petName" placeHolder="Pet Name" required>
+            <input type="text" class="form-control" name="petName" placeHolder="Pet Name" [(ngModel)]="pet.petName" required>
         </div>
         <div class="form-group">
             <label for="type">Type</label><br>
-                <input type="radio" name="type" value="dog"> Dog <br>
-                <input type="radio" name="type" value="cat"> Cat <br>
+                <input type="radio" name="type" value="dog" [(ngModel)]="pet.type"> Dog <br>
+                <input type="radio" name="type" value="cat" [(ngModel)]="pet.type"> Cat <br>
         </div>
         <div class="form-group">
             <label for="birthday">Pet Birthday</label><br>
-            <input type="date" name="bday" required>
+            <input type="date" name="bday" [(ngModel)]="pet.bday" required>
         </div>
         <div class="form-group">
             <label for="gender">Gender</label><br>
             <select name="gender" required>
-                <option value="male-neutered">Male-neutered</option>
-                <option value="male-not neutered">Male-not neutered</option>
-                <option value="female-spayed">Female-spayed</option>
-                <option value="female-not spayed">Female-not spayed</option>
+                <option value="male-neutered" [(ngModel)]="pet.gender" >Male-neutered</option>
+                <option value="male-not neutered" [(ngModel)]="pet.gender">Male-not neutered</option>
+                <option value="female-spayed" [(ngModel)]="pet.gender">Female-spayed</option>
+                <option value="female-not spayed" [(ngModel)]="pet.gender">Female-not spayed</option>
             </select>
         </div>
         <div class="form-group">
             <label for="breed">Breed</label><br>
-            <input type="text" name="breed" placeholder="Golden Retriever" required>
+            <input type="text" name="breed" placeholder="Golden Retriever" [(ngModel)]="pet.breed" required>
         </div>
         <div class="form-group">
             <label for="weight">Weight</label><br>
-            <input type="number" name="weight" required>
+            <input type="number" name="weight" placeholder="Enter weight" [(ngModel)]="pet.weight" required>
         </div>
         <div class="form-group">
             <label for="color">Color (optional)</label><br>
-            <input type="text" name="color" placeholder="Gold">
+            <input type="text" name="color" placeholder="Gold" [(ngModel)]="pet.color">
         </div>
         <hr>
 
         <h3>Choose a Service</h3>
         <div class="form-group">
             <div class="checkbox" required>
-                <label><input type="checkbox" value="nail trim">Nail Trim: $10</label><br>
-                <label><input type="checkbox" value="teeth cleaning">Teeth Cleaning: $7</label><br>
-                <label><input type="checkbox" value="bath/full haircut">Bath & Full Haircut: $60</label><br>
-                <label><input type="checkbox" value="bath/full haircut/nail trim">Bath, Full Haircut, & Nail Trim: $70</label><br>
-                <label><input type="checkbox" value="bath/full haircut/nail trim/teeth cleaning">Bath, Full Haircut, Nail Trim, & Teeth Cleaning $75</label><br>
+                <label><input type="checkbox" value="nail trim"> Nail Trim: $10</label><br>
+                <label><input type="checkbox" value="teeth cleaning"> Teeth Cleaning: $7</label><br>
+                <label><input type="checkbox" value="bath/full haircut"> Bath & Full Haircut: $60</label><br>
+                <label><input type="checkbox" value="bath/full haircut/nail trim"> Bath, Full Haircut, & Nail Trim: $70</label><br>
+                <label><input type="checkbox" value="bath/full haircut/nail trim/teeth cleaning"> Bath, Full Haircut, Nail Trim, & Teeth Cleaning: $75</label><br>
             </div>
         </div>
         <hr>
@@ -67,7 +67,7 @@
             <input type="text" name="name" placeholder="Full name of pet owner(s)">
         </div>
         <div class="form-group">
-            <label for="phone">Phone number</label><br>
+            <label for="phone">Phone Number</label><br>
             <input type="tel" name="phone" placeholder="Enter phone number">
         </div>
 
@@ -80,7 +80,7 @@
 
         <hr>
 
-        <button type="submit" class="btn btn-success" >Submit</button>
+        <button type="submit" class="btn btn-success" [disabled]="!form.valid">Submit</button>
 
     </form>
 </div>
