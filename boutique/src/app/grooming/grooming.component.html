@@ -4,6 +4,7 @@
         <h4>Book an appointment</h4>
         <hr>
 
+        <h3>Pet Details</h3>
         <div class="form-group">
             <label for="inputName">Pet Name</label><br>
             <input type="text" class="form-control" name="petName" placeHolder="Pet Name" required>
@@ -19,7 +20,7 @@
         </div>
         <div class="form-group">
             <label for="gender">Gender</label><br>
-            <select name="gender">
+            <select name="gender" required>
                 <option value="male-neutered">Male-neutered</option>
                 <option value="male-not neutered">Male-not neutered</option>
                 <option value="female-spayed">Female-spayed</option>
@@ -38,6 +39,40 @@
             <label for="color">Color (optional)</label><br>
             <input type="text" name="color" placeholder="Gold">
         </div>
+        <hr>
+
+        <h3>Choose a Service</h3>
+        <div class="form-group">
+            <div class="checkbox" required>
+                <label><input type="checkbox" value="nail trim">Nail Trim: $10</label><br>
+                <label><input type="checkbox" value="teeth cleaning">Teeth Cleaning: $7</label><br>
+                <label><input type="checkbox" value="bath/full haircut">Bath & Full Haircut: $60</label><br>
+                <label><input type="checkbox" value="bath/full haircut/nail trim">Bath, Full Haircut, & Nail Trim: $70</label><br>
+                <label><input type="checkbox" value="bath/full haircut/nail trim/teeth cleaning">Bath, Full Haircut, Nail Trim, & Teeth Cleaning $75</label><br>
+            </div>
+        </div>
+        <hr>
+
+        <h3>Contact Information</h3>
+        <div class="form-group">
+            <label for="name">Contact Name</label><br>
+            <input type="text" name="name" placeholder="Full name of pet owner(s)">
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone number</label><br>
+            <input type="tel" name="phone" placeholder="Enter phone number">
+        </div>
+
+        <hr>
+
+        <div class="form-group">
+            <label for="file">Choose File</label><br>
+            <input type="file" id="file" (change)="handleFileinput($event.target.files)">
+        </div>
+
+        <hr>
+
         <button type="submit" class="btn btn-success">Submit</button>
+
     </form>
 </div>
