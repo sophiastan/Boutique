@@ -74,13 +74,13 @@
         <hr>
 
         <div class="form-group">
-            <label for="file">Choose File</label><br>
-            <input type="file" id="file" (change)="handleFileinput($event.target.files)">
+            <label for="file">Select Agreement</label><br>
+            <input type="file" id="file" (change)="handleFileInput($event.target.files)">
         </div>
 
         <hr>
 
-        <button type="submit" class="btn btn-success" [disabled]="!form.valid">Submit</button>
+        <button type="submit" class="btn btn-success" >Submit</button>
 
     </form>
 </div>

@@ -8,77 +8,51 @@ export class SignService {
     baseUrl = 'https://api.na2.echosign.com/';
     uploadUrl = this.baseUrl + 'api/rest/v6/transientDocuments';
     sendUrl = this.baseUrl + 'api/rest/v6/agreements';
-    statusUrl = this.baseUrl + 'api/rest/v6/agreements/3AAABLblqZNOTREALAGREEMENTID5_BjiH';
 
     constructor(private http: HttpClient) {}
 
-    uploadFile(file: File): Observable<HttpEvent<any>> {
-        let formData = new FormData();
-        formData.append('upload', file);
+    uploadFile(file: File): Observable<any> {
+        // Encodes file input content
+        const formData = new FormData();
+        formData.append('form-data', file);
 
-        const url = this.uploadUrl;
+        // Access Token obtained from authorization code (code in the request, client id, client secret) 
+        const accessToken = 'CBNCKBAAHBCAABAA18wDtLFTzDSbu1MpP3DVmpTlyEEpyFbx';
 
-        let params = new HttpParams();
-        // let headers = new HttpHeaders({
-        //     'Authorization': 'Bearer' + localStorage.getItem('accessToken')
-        // });
-        // do not need to set headers, causes problems
-        let headers = new HttpHeaders({
-            'Content-Type': undefined
-        });
-        
-        const options = {
-            headers: headers,
-            params: params,
-            reportProgress: true
-        };
+        // Specify access token
+        const headers = {
+             'Authorization': 'Bearer ' + accessToken,
+             'Content-Type': 'multipart/form-data'
+         };
 
-        const req = new HttpRequest('POST', url, formData, options);
-        return this.http.request(req);
+        return this.http.post(this.uploadUrl, formData, {'headers': headers});
     }
 
-    // uploadFile1(fileToUpload: File): Observable<boolean> {
-    //     const endpoint = this.uploadUrl;
-    //     const formData: FormData = new FormData();
-    //     formData.append('filekey', fileToUpload, fileToUpload.name);
-    //     let headers = new HttpHeaders({
-    //         'Content-Type': undefined
-    //     });
-        
-    //     const options = {
-    //         headers: headers,
-    //         reportProgress: true
-    //     };
-    //     return this.http
-    //         .post(endpoint, formData, options)
-    //         .map(() => { return true; })
-    //         .catch((error) => Observable.throw(error));
-    // }
+    sendAgreement(documentId: string): Observable<any> {
+        const accessToken = 'CBNCKBAAHBCAABAA18wDtLFTzDSbu1MpP3DVmpTlyEEpyFbx';
 
-    sendFile<T>(url: string, data: any): Observable<T> {
-        let headers = new HttpHeaders({
+        const headers = {
+            'Authorization': 'Bearer ' + accessToken,
             'Content-Type': 'application/json'
-        });
+        };
 
-        let agreementInfo = {
-            "fileInfos": [{
-                "transientDocumentId": "<copy-transient-from-the-upload-document-step>"
+        // Information about agreement
+        const agreementInfo = {
+            'fileInfos': [{
+                'transientDocumentId': documentId
             }],
-            "name": "AgreementForm",
-            "participantSetsInfo": [{
-                "memberInfos": [{
-                    "email": "signer@waggyfriendboutique.com"
+            'name': 'AgreementForm',
+            'participantSetsInfo': [{
+                'memberInfos': [{
+                    'email': 'signer@waggyfriendboutique.com'
                 }],
-                "order": 1,
-                "role": "SIGNER"
+                'order': 1,
+                'role': 'SIGNER'
             }],
-            "signatureType": "ESIGN",
-            "state": "IN_PROCESS"
-        }
+            'signatureType': 'ESIGN',
+            'state': 'IN_PROCESS'
+        };
 
-        url = this.sendUrl;
-        data = agreementInfo;
-
-        return this.http.post<T>(url, JSON.stringify(data), {headers: headers});
+        return this.http.post(this.sendUrl, agreementInfo, {'headers': headers});
     }
 }
