@@ -1,5 +1,5 @@
 <div class="container">
-    <form (submit)="submit()">
+    <form novalidate #form="ngForm" (submit)="submit()">
         <h1>Grooming Salon</h1>
         <h4>Book an appointment</h4>
         <hr>
@@ -53,6 +53,14 @@
         </div>
         <hr>
 
+        <h3>Choose a Date & Time</h3>
+        <div class="form-group">
+            <label for="date and time">(Date and Time)</label><br>
+            <input type="datetime-local" name="datetime">
+        </div>
+
+        <hr>
+
         <h3>Contact Information</h3>
         <div class="form-group">
             <label for="name">Contact Name</label><br>
@@ -72,7 +80,7 @@
 
         <hr>
 
-        <button type="submit" class="btn btn-success">Submit</button>
+        <button type="submit" class="btn btn-success" [disabled]="!form.valid">Submit</button>
 
     </form>
 </div>
