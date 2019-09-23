@@ -16,13 +16,13 @@ export class SignService {
     uploadFile(file: File): Observable<any> {
         // Encodes file input content
         const formData = new FormData();
-        formData.append('form-data', file);
+        formData.append('form-data', file, file.name);
 
         // Access Token obtained from authorization code (code in the request, client id, client secret) 
-        const contentDisposition = 'form-data; name=";File"; filename="' + file.name + '"';
         const httpOptions = {
             headers: new HttpHeaders({
-                'Authorization': 'Bearer ' + this.integrationKey
+                'Authorization': 'Bearer ' + this.integrationKey,
+                'Content-Type': 'multipart/form-data'
             })
         };
 
