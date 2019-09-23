@@ -1,0 +1,39 @@
+For getting access token part 1
+https://secure.na2.echosign.com/public/oauth?redirect_uri=https://www.waggyfriendboutique.com&
+response_type=code&client_id=CBJCHBCAABAAUBsUOqrHCymKvT9Y-BZfTZI_FEmN3fmI&scope=user_login:self+agreement_read:account+agreement_write:account+agreement_send:account&
+state=waggyfriendboutiquestate
+
+Response: Code valid for 5 mins
+
+https://www.waggyfriendboutique.com/?code=CBNCKBAAHBCAABAA4bGnRzLk4F_2Lb2okRZnlUZYg5BeD8RV&api_access_point=https%3A%2F%2Fapi.na2.echosign.com%2F&state=waggyfriendboutiquestate&web_access_point=https%3A%2F%2Fwaggyfriendboutique.na2.echosign.com%2F
+
+
+
+
+baseUrl = https://api.na2.echosign.com/
+urlUpload = api/rest/v6/transientDocuments
+urlSend = api/rest/v6/agreements
+
+------------------------------------
+For getting access token part 2
+http://api.echosign.com/oauth/token?code=CBNCKBAAHBCAABAA4bGnRzLk4F_2Lb2okRZnlUZYg5BeD8RV&client_id=CBJCHBCAABAAUBsUOqrHCymKvT9Y-BZfTZI_FEmN3fmI&client_secret=_4DQtykN8lU4hh28aLR2rh54CAs_mKVr&redirect_uri=https://www.waggyfriendboutique.com&grant_type=authorization_code
+
+http://api.echosign.com/oauth/token?code=CBNCKBAAHBCAABAA4bGnRzLk4F_2Lb2okRZnlUZYg5BeD8RV&client_id=CBJCHBCAABAAUBsUOqrHCymKvT9Y-BZfTZI_FEmN3fmI&client_secret=_4DQtykN8lU4hh28aLR2rh54CAs_mKVr&redirect_uri=https://www.waggyfriendboutique.com&grant_type=authorization_code
+--------------------------------------------
+
+Refresh Token 
+
+http://api.na2.echosign.com/oauth/refresh/refresh_token=3AAABLblqZhCcMAwXx103bTj9AF3MAuY6T7XdfQ3zLr3uH1nGsZYjh6LihdS5tDGFGwfJrZqWT_0*&
+client_id=CBJCHBCAABAAUBsUOqrHCymKvT9Y-BZfTZI_FEmN3fmI&
+client_secret=_4DQtykN8lU4hh28aLR2rh54CAs_mKVr&
+grant_type=refresh_token
+
+------------------------------------------
+JSON body containing access token & refresh token
+
+{
+    "access_token": "3AAABLblqZhB2DTcTU_NFdPMsgsZJMQY8li8HISRx6PgL5GjPbOddzm34jBt4Bm9o8qmm9mDvWHlPtYwKr20o3SbTIhbPQChG",
+    "refresh_token": "3AAABLblqZhCcMAwXx103bTj9AF3MAuY6T7XdfQ3zLr3uH1nGsZYjh6LihdS5tDGFGwfJrZqWT_0*",
+    "token_type": "Bearer",
+    "expires_in": 3600
+}

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SignService } from '../services/sign.service';
+import { Pet } from './pet'
 
 @Component({
   selector: 'app-grooming',
@@ -8,13 +9,14 @@ import { SignService } from '../services/sign.service';
   styleUrls: ['./grooming.component.css']
 })
 export class GroomingComponent implements OnInit {
+  pet: Pet;
   // Define default variable for selected file
   fileToUpload: File = null;
 
   constructor(
     private router: Router,
     private signService: SignService) {
-
+      this.pet = new Pet();
     }
 
   ngOnInit() {
@@ -54,5 +56,6 @@ export class GroomingComponent implements OnInit {
   submit() {
     // submit document for signing
     this.uploadFile();
+    console.log(this.pet);
   }
 }
