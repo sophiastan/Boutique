@@ -55,7 +55,23 @@ export class SignService {
                 {
                   "fieldName": "petName",
                   "defaultValue": pet.petName,
-                }
+                },
+                {
+                    "fieldName": "bday",
+                    "defaultValue": pet.bday,
+                },
+                {
+                    "fieldName": "breed",
+                    "defaultValue": pet.breed,
+                },
+                {
+                    "fieldName": "weight",
+                    "defaultValue": pet.weight,
+                },
+                {
+                    "fieldName": "color",
+                    "defaultValue": pet.color,
+                  }
             ],
             'signatureType': 'ESIGN',
             'state': 'IN_PROCESS'

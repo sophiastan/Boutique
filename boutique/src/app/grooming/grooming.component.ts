@@ -11,7 +11,6 @@ import { Pet } from './pet'
 export class GroomingComponent implements OnInit {
   pet: Pet;
   docName: string;
-  // Define default variable for selected file
   fileToUpload: File = null;
 
   constructor(private router: Router, private signService: SignService) {
@@ -51,7 +50,7 @@ export class GroomingComponent implements OnInit {
         const doc = data.libraryDocumentList.find(x => x.name === this.docName);
         if (doc) {
           docId = doc.id;
-          
+
           // Get agreement id for doc id
           this.signService.getAgreementId(this.pet, docId)
           .subscribe(data => {
@@ -62,8 +61,9 @@ export class GroomingComponent implements OnInit {
             console.log(error);
           }
         }
+        // Error if document name is not correct
         else {
-          console.log("Document is not found.");
+          console.log("Error: Document is not found.");
         }
       }),
       error => {
