@@ -8,7 +8,7 @@ import { Pet } from '../grooming/pet';
 export class SignService {
     baseUrl = 'https://api.na2.echosign.com';
     uploadUrl = this.baseUrl + '/api/rest/v6/transientDocuments';
-    sendUrl = this.baseUrl + '/api/rest/v6/agreements';
+    agreementUrl = this.baseUrl + '/api/rest/v6/agreements';
     libraryUrl = this.baseUrl + '/api/rest/v6/libraryDocuments';
     integrationKey = 'Bearer 3AAABLblqZhAG7qkayUIOJhNzp2GW-e1PUbHr2byu0rBPCQYaCrnMN0I7zVFg_blSnOpqyTL5xanhWv22b2Vc_H9qURCS4UfB';
     httpOptions = {
@@ -37,7 +37,7 @@ export class SignService {
         return this.http.get(this.libraryUrl, this.httpOptions);
     }
 
-    postAgreement(pet: Pet, documentId: string): Observable<any> {
+    getAgreementId(pet: Pet, documentId: string): Observable<any> {
         // Information about agreement
         const agreementInfo = {
             'fileInfos': [{
@@ -63,6 +63,6 @@ export class SignService {
 
         console.log(agreementInfo);
 
-        return this.http.post(this.sendUrl, agreementInfo, this.httpOptions);
+        return this.http.post(this.agreementUrl, agreementInfo, this.httpOptions);
     }
 }

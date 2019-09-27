@@ -14,9 +14,7 @@ export class GroomingComponent implements OnInit {
   // Define default variable for selected file
   fileToUpload: File = null;
 
-  constructor(
-    private router: Router,
-    private signService: SignService) {
+  constructor(private router: Router, private signService: SignService) {
       this.pet = new Pet();
     }
 
@@ -34,58 +32,42 @@ export class GroomingComponent implements OnInit {
       .subscribe(data => {
         // Get document Id
         const docId = data.transientDocumentId;
-
-        // // Send document
-        // this.signService.sendAgreement(docId)
-        //   .subscribe(d => {
-        //     // Get sign generated Id
-        //     const signId = d.id;
-        //   },
-        //     error => {
-        //       // Display error from send document
-        //       console.log(error);
-        //     }
-        //   );
+        console.log('transientDocumentId: ' + docId);
       },
-        error => {
-          // Display error from uploading document
-          console.log(error);
-        }
+      error => {
+        // Display error from uploading document
+        console.log(error);
+      }
       );
   }
 
-  postAgreement(docId: string) {
-    this.signService.postAgreement(this.pet, docId)
-      .subscribe(data => {
-        console.log(data);
-      }),
-        error => {
-          console.log(error);
-        }
-  }
-
-  submitAgreement() {
-    const docName = "[DEMO USE ONLY] Pet Form";
+  getAgreement() {
+    // Get the list of library documents
     this.signService.getLibraryDocuments()
       .subscribe(data => {
-        let id: string;
-        // Get Library Document ID
-        const doc = data.libraryDocumentList.find(x => x.name === docName);
+        let docId: string;
+
+        // Find a document for a document name
+        const doc = data.libraryDocumentList.find(x => x.name === this.docName);
         if (doc) {
-          id = doc.id;
-          this.postAgreement(id);
+          docId = doc.id;
+          
+          // Get agreement id for doc id
+          this.signService.getAgreementId(this.pet, docId)
+          .subscribe(data => {
+            const agreementId = data.id;
+            console.log('agreementId: ' + agreementId);
+          }),
+          error => {
+            console.log(error);
+          }
         }
         else {
-          console.log("Doc not found");
+          console.log("Document is not found.");
         }
       }),
       error => {
         console.log(error);
       }
-  }
- 
-  submit() {
-    // this.uploadFile();
-    this.submitAgreement();
   }
 }

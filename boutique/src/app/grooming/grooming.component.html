@@ -1,6 +1,6 @@
 <div class="container">
     <!-- <form novalidate #form="ngForm" (submit)="submit()"> -->
-    <form (submit)="submit()">
+    <form>
         <h1>Grooming Salon</h1>
         <h4>Book an appointment</h4>
         <hr>
@@ -10,6 +10,13 @@
             <label for="inputName">Pet Name</label><br>
             <input type="text" class="form-control" name="petName" placeHolder="Pet Name" [(ngModel)]="pet.petName" required>
         </div>
+
+        <div class="form-group">
+            <label for="Document Name">Document Name</label> <br>
+            <input type="text" name="documentName" placeholder="Enter Document Name" [(ngModel)]="docName">
+        </div>
+        <button type="button" class="btn btn-success" (click)="getAgreement()">Send Agreement</button>
+        
         <!-- <div class="form-group">
             <label for="type">Type</label><br>
                 <input type="radio" name="type" value="dog" [(ngModel)]="pet.type"> Dog <br>
@@ -70,18 +77,14 @@
         <div class="form-group">
             <label for="phone">Phone Number</label><br>
             <input type="tel" name="phone" placeholder="Enter phone number">
-        </div>
+        </div> -->
 
-        <hr> -->
+        <hr> 
 
         <div class="form-group">
             <label for="file">Select Agreement</label><br>
             <input type="file" id="inputFile" (change)="handleFileInput($event.target.files)">
         </div>
-
-        <hr>
-
-        <!-- <button type="submit" class="btn btn-success" [disabled]="!form.valid">Submit</button> -->
-        <button type="submit" class="btn btn-success">Submit</button>
+        <button type="button" class="btn btn-primary" (click)="uploadFile()">Upload File</button> <br><br>
     </form>
 </div> 
