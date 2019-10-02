@@ -21,6 +21,11 @@ export class SignService {
 
     constructor(private http: HttpClient) {}
 
+    // Base Uri
+    getBaseUris(): Observable<any> {
+        return this.http.get(this.baseUrl + '/api/rest/v6/baseUris', this.httpOptions);
+    }
+
     // Transient Documents ID
     uploadFile(file: File): Observable<any> {
         const selectedFile = (<HTMLInputElement>document.getElementById("inputFile")).files;
@@ -67,8 +72,14 @@ export class SignService {
     }
 
     // Retrieves the file stream of a document of library doc
+    getFileStream(libDocId: string, documentId: string): Observable<any> {
+        return this.http.get(this.libraryUrl + '/' + libDocId + '/documents/' + documentId);
+    }
 
     // Retrieves image urls of all visible pages of a document associated with a library document
+    getImageUrls(libDocId: string, documentId: string): Observable<any> {
+        return this.http.get(this.libraryUrl + '/' + libDocId + '/documents/' + documentId + '/imageUrls');
+    }
 
     // Retrieves data entered into the interactive form fields of the library document <- download reponse body
 
