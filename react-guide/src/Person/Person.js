@@ -1,6 +1,6 @@
 import React from 'react';
 // import Radium from 'radium';
-import './Person.css';
+import classes from './Person.css';
 
 // ES6 function syntax
 // a stateless component, no internal state management
@@ -14,7 +14,7 @@ const person = (props) => {
     //     }
     // };
     return (
-        <div className="Person">
+        <div className={classes.Person}>
             <p onClick={props.click}>I'm a {props.name} and I am {props.age} years old!</p>
             <p>{props.children}</p>
             <input type="text" onChange={props.changed} value={props.name} />
