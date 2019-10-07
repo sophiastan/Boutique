@@ -7,6 +7,12 @@ import classes from './Person.css';
 // have as many presentational/dumb components as possible 
 
 const person = (props) => {
+    const rnd = Math.random();
+
+        if (rnd > 0.7) {
+            throw new Error('Something went wrong');
+        }
+
     // For radium
     // const style = {
     //     '@media (min-width: 500px)': {
