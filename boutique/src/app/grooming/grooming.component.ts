@@ -28,19 +28,19 @@ export class GroomingComponent implements OnInit {
 
    // Test api calls
    test() {
-    //this.getBaseUris();
-    // this.getLibraryDocId();
-    // this.getAgreementId();
-    // this.getLibraryDocumentDetails();
+    this.getBaseUris();
+    this.getLibraryDocId();
+    this.getAgreementId();
+    this.getLibraryDocumentDetails();
 
-    // this.getLibraryAuditTrail();
-    // this.getCombinedDoc();
+    this.getLibraryAuditTrail();
+    this.getCombinedDoc();
 
-    // this.getUrlVisiblePages();
-    // this.getLibraryIDs();
-    // this.getMembersInfo();
-    // this.getEventsInfo();
-    // this.getLatestNote();
+    this.getUrlVisiblePages();
+    this.getLibraryIDs();
+    this.getMembersInfo();
+    this.getEventsInfo();
+    this.getLatestNote();
   }
 
   // Gets base uri to access other APIs
